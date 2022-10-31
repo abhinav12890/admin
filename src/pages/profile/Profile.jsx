@@ -3,16 +3,16 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import Feed from "../../components/feed/Feed";
-import { Link } from "react-router-dom";
-import { useUserAuth } from "../../context/UserAuthContext";
+import { AuthContext } from "../../context/AuthContext";
 // import { auth } from "../../firebase";
 // import { db } from "../../firebase";
 // import { useContext } from 'react'
 
 // import Datatable from "../../components/datatable/Datatable";
+import { useContext } from "react";
 
 const Profile = () => {
-  const {user} = useUserAuth();
+  const { currentUser } = useContext(AuthContext);
 
   // console.log(user);
   return (
@@ -26,15 +26,15 @@ const Profile = () => {
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src={user.photoURL}
+                src={currentUser.photoURL}
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{user.displayName}</h1>
+                <h1 className="itemTitle">{currentUser.displayName}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">{user.email}</span>
+                  <span className="itemValue">{currentUser.email}</span>
                 </div>
                 <div className="new">
                   {/* <Link to="/users/test/new" className="link">

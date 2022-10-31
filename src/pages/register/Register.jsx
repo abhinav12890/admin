@@ -24,9 +24,10 @@ const Register = () => {
     try {
       //Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
+
       //Create a unique image name
       const date = new Date().getTime();
-      const storageRef = ref(storage, `profilepic/${displayName + date}`);
+      const storageRef = ref(storage, `profile/${displayName + date}`);
 
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
@@ -45,7 +46,7 @@ const Register = () => {
             });
 
             //create empty user chats on firestore
-            // await setDoc(doc(db, "userChats", res.user.uid), {});
+            await setDoc(doc(db, "userChats", res.user.uid), {});
             navigate("/");
           } catch (err) {
             console.log(err);

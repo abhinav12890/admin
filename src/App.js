@@ -5,6 +5,8 @@ import Users from "./pages/users/Users";
 import Profile from "./pages/profile/Profile";
 import Data from "./pages/data/Data";
 import New from "./pages/new/New";
+import Talk from "./pages/talk/Talk";
+
 import "./style/dark.scss";
 import { userInputs } from "./formSource";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -12,7 +14,7 @@ import { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import { useUserAuth } from "./context/UserAuthContext";
 import ProtectedRoute from "./context/ProtectedRoute";
-
+import "./style/style.scss";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -29,17 +31,29 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
+          {/* <Route path="/">
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Talk/>
+              </ProtectedRoute>
+            }
+          />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route> */}
           <Route path="/">
-            <Route index element={<Login />} />
-            <Route path="register" element={<Register />} />
             <Route
-              path="home"
+              index
               element={
                 <ProtectedRoute>
                   <Home />
                 </ProtectedRoute>
               }
             />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
             <Route path="users">
               <Route
                 index
@@ -76,6 +90,15 @@ function App() {
                 }
               />
             </Route>
+            <Route
+              path="talk"
+            element={
+              <ProtectedRoute>
+                <Talk/>
+              </ProtectedRoute>
+            }
+          />
+
           </Route>
         </Routes>
       </BrowserRouter>
