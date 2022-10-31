@@ -97,7 +97,7 @@ const Register = () => {
           <input disabled={loading} type="submit" value="Signup" />
           {loading && <span className="er">Uploading and compressing the image please wait...</span> }
 
-		      {err && <span className="er">Wrong email or password!</span>}
+		      {err && <span className="er">Email or password already exists!</span>}
         </form>
       </div>
     </div>
