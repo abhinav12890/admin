@@ -11,7 +11,7 @@ import "./style/dark.scss";
 import { userInputs } from "./formSource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 // import { useUserAuth } from "./context/UserAuthContext";
 import ProtectedRoute from "./context/ProtectedRoute";
 import "./style/style.scss";
