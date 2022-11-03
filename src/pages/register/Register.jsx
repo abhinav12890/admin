@@ -38,7 +38,7 @@ const Register = () => {
               photoURL: downloadURL,
             });
             //create user on firestore
-            await setDoc(doc(db, "users", res.user.uid), {
+            await setDoc(doc(db, "admin", res.user.uid), {
               uid: res.user.uid,
               displayName,
               email,
